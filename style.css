@@ -1,0 +1,203 @@
+/* ===============================
+ОБЩИЙ STYLE.CSS
+Стилистика: минимализм + зелёные акценты
+Основано на примерах одногруппников, без копирования
+=============================== */
+
+:root {
+--green-main: #2e7d32;
+--green-light: #66bb6a;
+--green-bg: #e8f5e9;
+--text-main: #1b1b1b;
+--border-soft: #c8e6c9;
+}
+
+/* СБРОС */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: "Segoe UI", Arial, sans-serif;
+background-color: var(--green-bg);
+color: var(--text-main);
+line-height: 1.7;
+}
+
+/* ХЛЕБНЫЕ КРОШКИ */
+nav[aria-label] {
+max-width: 1100px;
+margin: 20px auto 0;
+padding: 0 20px;
+font-size: 0.9rem;
+}
+
+nav[aria-label] a {
+color: var(--green-main);
+text-decoration: none;
+}
+
+/* ШАПКА И НАВИГАЦИЯ */
+header {
+background: white;
+border-bottom: 2px solid var(--border-soft);
+}
+
+header nav {
+max-width: 1100px;
+margin: 0 auto;
+}
+
+header ul {
+list-style: none;
+display: flex;
+justify-content: center;
+gap: 25px;
+padding: 15px 20px;
+}
+
+header a {
+text-decoration: none;
+color: var(--text-main);
+font-weight: 500;
+padding-bottom: 5px;
+}
+
+header a:hover {
+color: var(--green-main);
+}
+
+header a.active {
+color: var(--green-main);
+border-bottom: 2px solid var(--green-main);
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+main {
+max-width: 1100px;
+margin: 40px auto;
+padding: 0 20px;
+}
+
+section {
+background: white;
+padding: 25px 30px;
+margin-bottom: 30px;
+border-radius: 8px;
+border: 1px solid var(--border-soft);
+}
+
+/* ЗАГОЛОВКИ */
+h1 {
+font-size: 2.2rem;
+color: var(--green-main);
+margin-bottom: 20px;
+}
+
+h2 {
+color: var(--green-main);
+margin-bottom: 15px;
+}
+
+h3 {
+margin: 15px 0 10px;
+}
+
+/* ТЕКСТ */
+p {
+text-align: justify; /* JUST */
+margin-bottom: 15px;
+}
+
+/* ИЗОБРАЖЕНИЯ */
+img {
+display: block;
+margin: 15px 0;
+max-width: 100%;
+border-radius: 6px;
+}
+
+/* СПИСКИ */
+ul {
+padding-left: 20px;
+}
+
+li {
+margin-bottom: 8px;
+}
+
+/* ТАБЛИЦА */
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+td {
+padding: 10px;
+border-bottom: 1px solid var(--border-soft);
+}
+
+/* ФОРМА */
+form {
+display: flex;
+flex-direction: column;
+}
+
+label {
+margin-top: 10px;
+margin-bottom: 5px;
+}
+
+input,
+textarea {
+padding: 10px;
+border-radius: 5px;
+border: 1px solid var(--border-soft);
+font-family: inherit;
+}
+
+textarea {
+resize: vertical;
+min-height: 100px;
+}
+
+button {
+margin-top: 15px;
+padding: 12px;
+background: var(--green-main);
+color: white;
+border: none;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+}
+
+button:hover {
+background: var(--green-light);
+}
+
+/* ФУТЕР */
+footer {
+background: white;
+border-top: 2px solid var(--border-soft);
+text-align: center;
+padding: 15px;
+margin-top: 50px;
+font-size: 0.9rem;
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+header ul {
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+main {
+margin-top: 25px;
+}
+}
