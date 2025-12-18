@@ -1,18 +1,11 @@
-/* ===============================
-ОБЩИЙ STYLE.CSS
-Стилистика: минимализм + зелёные акценты
-Основано на примерах одногруппников, без копирования
-=============================== */
-
 :root {
---green-main: #2e7d32;
---green-light: #66bb6a;
---green-bg: #e8f5e9;
---text-main: #1b1b1b;
---border-soft: #c8e6c9;
+--green-main: #1b5e20;
+--green-accent: #43a047;
+--green-light: #a5d6a7;
+--bg-main: #f4fbf6;
+--text-main: #1e1e1e;
+--shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
-
-/* СБРОС */
 
 * {
   margin: 0;
@@ -20,9 +13,13 @@
   box-sizing: border-box;
   }
 
+html {
+scroll-behavior: smooth;
+}
+
 body {
-font-family: "Segoe UI", Arial, sans-serif;
-background-color: var(--green-bg);
+font-family: "Inter", "Segoe UI", Arial, sans-serif;
+background-color: var(--bg-main);
 color: var(--text-main);
 line-height: 1.7;
 }
@@ -40,10 +37,13 @@ color: var(--green-main);
 text-decoration: none;
 }
 
-/* ШАПКА И НАВИГАЦИЯ */
+/* HEADER */
 header {
+position: sticky;
+top: 0;
+z-index: 10;
 background: white;
-border-bottom: 2px solid var(--border-soft);
+box-shadow: var(--shadow-soft);
 }
 
 header nav {
@@ -55,46 +55,65 @@ header ul {
 list-style: none;
 display: flex;
 justify-content: center;
-gap: 25px;
-padding: 15px 20px;
+gap: 30px;
+padding: 18px 20px;
 }
 
 header a {
 text-decoration: none;
 color: var(--text-main);
 font-weight: 500;
-padding-bottom: 5px;
+position: relative;
 }
 
-header a:hover {
-color: var(--green-main);
+header a::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: -5px;
+width: 0;
+height: 2px;
+background: var(--green-accent);
+transition: width 0.3s ease;
+}
+
+header a:hover::after,
+header a.active::after {
+width: 100%;
 }
 
 header a.active {
 color: var(--green-main);
-border-bottom: 2px solid var(--green-main);
 }
 
-/* ОСНОВНОЙ КОНТЕНТ */
+/* MAIN */
 main {
 max-width: 1100px;
-margin: 40px auto;
+margin: 50px auto;
 padding: 0 20px;
 }
 
 section {
 background: white;
-padding: 25px 30px;
-margin-bottom: 30px;
-border-radius: 8px;
-border: 1px solid var(--border-soft);
+padding: 30px 35px;
+margin-bottom: 35px;
+border-radius: 14px;
+box-shadow: var(--shadow-soft);
+transform: translateY(20px);
+opacity: 0;
+transition: all 0.6s ease;
 }
 
-/* ЗАГОЛОВКИ */
+section.visible {
+transform: translateY(0);
+opacity: 1;
+}
+
+/* HEADINGS */
 h1 {
-font-size: 2.2rem;
+font-size: 2.4rem;
 color: var(--green-main);
-margin-bottom: 20px;
+margin-bottom: 25px;
 }
 
 h2 {
@@ -106,21 +125,22 @@ h3 {
 margin: 15px 0 10px;
 }
 
-/* ТЕКСТ */
+/* TEXT */
 p {
-text-align: justify; /* JUST */
+text-align: justify;
 margin-bottom: 15px;
 }
 
-/* ИЗОБРАЖЕНИЯ */
+/* IMAGES */
 img {
 display: block;
-margin: 15px 0;
+margin: 20px 0;
 max-width: 100%;
-border-radius: 6px;
+border-radius: 12px;
+box-shadow: var(--shadow-soft);
 }
 
-/* СПИСКИ */
+/* LISTS */
 ul {
 padding-left: 20px;
 }
@@ -129,77 +149,76 @@ li {
 margin-bottom: 8px;
 }
 
-/* ТАБЛИЦА */
+/* TABLE */
 table {
 width: 100%;
 border-collapse: collapse;
 }
 
 td {
-padding: 10px;
-border-bottom: 1px solid var(--border-soft);
+padding: 12px;
+border-bottom: 1px solid var(--green-light);
 }
 
-/* ФОРМА */
+/* FORM */
 form {
 display: flex;
 flex-direction: column;
 }
 
 label {
-margin-top: 10px;
-margin-bottom: 5px;
+margin-top: 12px;
+margin-bottom: 6px;
 }
 
 input,
 textarea {
-padding: 10px;
-border-radius: 5px;
-border: 1px solid var(--border-soft);
+padding: 12px;
+border-radius: 8px;
+border: 1px solid var(--green-light);
 font-family: inherit;
 }
 
 textarea {
 resize: vertical;
-min-height: 100px;
+min-height: 120px;
 }
 
 button {
-margin-top: 15px;
-padding: 12px;
+margin-top: 18px;
+padding: 14px;
 background: var(--green-main);
 color: white;
 border: none;
-border-radius: 5px;
+border-radius: 10px;
 font-size: 1rem;
 cursor: pointer;
+transition: transform 0.2s ease, background 0.3s ease;
 }
 
 button:hover {
-background: var(--green-light);
+background: var(--green-accent);
+transform: translateY(-2px);
 }
 
-/* ФУТЕР */
+/* FOOTER */
 footer {
 background: white;
-border-top: 2px solid var(--border-soft);
 text-align: center;
-padding: 15px;
-margin-top: 50px;
+padding: 18px;
+margin-top: 60px;
 font-size: 0.9rem;
+box-shadow: var(--shadow-soft);
 }
 
-/* АДАПТИВ */
+/* ADAPTIVE */
 @media (max-width: 768px) {
 header ul {
 flex-direction: column;
-align-items: center;
-gap: 10px;
+gap: 12px;
 }
 
-main {
-margin-top: 25px;
+h1 {
+font-size: 2rem;
 }
 }
-
-
